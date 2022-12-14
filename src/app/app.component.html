@@ -2,3 +2,26 @@
 <!--The double curly braces are Angular's interpolation binding syntax.
    This interpolation binding presents the component's title property value inside the HTML header tag.-->
 <courses></courses>
+<div [hidden]="books.length == 0">
+  <h2>List of Books:</h2> 
+  <div *ngFor="let book of books">
+    <ul>
+      <li>{{book}}</li>
+    </ul>
+  </div>
+</div>
+<div [hidden]="books.length > 0">
+  No books available! Library will so been refilled.
+</div>
+<div *ngIf="books.length > 0; then professorList else TAList"></div>
+  <ng-template #professorList>
+    `<h2>Professors</h2>
+    <div *ngFor="let professor of professors">
+      <ul>
+        <li>{{professor}}</li>
+      </ul>
+    </div>
+  </ng-template>
+  <ng-template #TAList>
+    <h2>We are hiring for new Teaching Assistants!</h2>
+  </ng-template>

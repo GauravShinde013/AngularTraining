@@ -1,3 +1,4 @@
+import { CoursesService } from './courses.service';
 import { Component } from "@angular/core";
 
 @Component({
@@ -12,6 +13,11 @@ import { Component } from "@angular/core";
         `
 })
 export class CoursesComponent{
-    title = "List of Courses"
-    courses = ["SpringBoot", "Angular", "ASP.NET"]
+    title = "List of Courses";
+    courses;
+
+    constructor(service: CoursesService){ //dependancy injection
+        //let service = new CoursesService();
+        this.courses = service.getCourses();
+    }
 }
